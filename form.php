@@ -12,7 +12,6 @@ $timetable = ( isset( $_POST["timetable"] ) == true ) ?$_POST["timetable"]: "";
 $teacher_name = ( isset( $_POST["teacher_name"] ) == true ) ?$_POST["teacher_name"]: "";
 $comment  = ( isset( $_POST["comment"] )  === true ) ?  trim($_POST["comment"])  : "";
 
-
 if (  isset($_POST["send"] ) ===  true ) {
     if ( $class_name   === "" ) $err_msg1 = "授業の名前を入力してください"; 
 
@@ -52,11 +51,11 @@ while( $res = fgets( $fp)){
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" href="mon.css">
         <title>石池｜Ishiike 月曜日</title>
-        <link rel="icon" href="ishiike_icon.jpg" type="image/png">
+        <link rel="icon" href="ishiike_logo.png" type="image/png">
     </head>
     <body>
         <header>
-            <h1><img src="ishiike_icon.jpg" width="30px" height="30px"> 石池｜Ishiike 【月曜日】</h1>
+        <h1><a href="http://tmu-minamiosawa.sakura.ne.jp/ishiike/home.html"><img src="ishiike_logo.png" width="210px" height="100px"></a>【月曜日】</h1>
         </header>
         <?php echo $message; ?>
         <form method="post" action="">
@@ -78,6 +77,6 @@ while( $res = fgets( $fp)){
         <?php endforeach;?>
 </dl>
 <br>
-        <a href="http://tmu-minamiosawa.sakura.ne.jp/ishiike/home.html">ホーム</a>
+        <a href="https://ishiike.matrix.jp/">ホーム</a>
     </body>
 </html>
