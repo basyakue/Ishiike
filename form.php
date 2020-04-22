@@ -72,8 +72,8 @@ while( $res = fgets( $fp)){
         </form>
         <dl>
          <?php foreach( $dataArr as $data ):?>
-         <p>★<span><?php echo $data["class_name"]; ?></span> : <span><?php echo $data["timetable"]; ?></span> : <span><?php echo $data["teacher_name"]; ?></span><br>
-         <span><?php echo $data["comment"]; ?></span></p>
+         <p>★<span><?php echo htmlspecialchars($data["class_name"]); ?></span> : <span><?php echo htmlspecialchars($data["timetable"]); ?></span> : <span><?php echo htmlspecialchars($data["teacher_name"]); ?></span><br>
+         <span><?php echo htmlspecialchars($data["comment"]); ?></span></p>
         <?php endforeach;?>
 </dl>
 <br>
