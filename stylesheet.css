@@ -1,4 +1,4 @@
-html, body, div, span, applet, object, iframe, strong, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, legend, caption, tbody, tfoot, thead, label {
+html, body, div, span, applet, object, iframe, strong, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, legend, caption, tbody, tfoot, thead, label {
     margin: 0;
     padding: 0;
     border: 0;
@@ -6,6 +6,7 @@ html, body, div, span, applet, object, iframe, strong, h1, h2, h3, h4, h5, h6, p
     vertical-align: baseline;
     list-style: none;
     text-align: center;
+    background-color: #FBFBFB;
   }
 
 /* change border colour to suit your needs */
@@ -55,7 +56,7 @@ li {
     line-height: 120%;
     text-align: center;
     text-decoration: none;
-    background: #1B73BA;
+    background-color: black;
     display: inline-block;
     position:relative;
     -webkit-border-radius: 12px;
