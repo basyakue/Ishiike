@@ -2,6 +2,8 @@
 
 //すべての曜日がこのコードになってます
 
+
+//書き込まれたテキストの関数と何も書き込まれなかった場合のエラーメッセージの関数を最初に定義
 $err_msg1 = "";
 $err_msg2 = "";
 $err_msg3 = "";
@@ -12,6 +14,13 @@ $timetable = ( isset( $_POST["timetable"] ) == true ) ?$_POST["timetable"]: "";
 $teacher_name = ( isset( $_POST["teacher_name"] ) == true ) ?$_POST["teacher_name"]: "";
 $comment  = ( isset( $_POST["comment"] )  === true ) ?  trim($_POST["comment"])  : "";
 
+//改行を削除
+//テキストデータを１行ずつ取得して表示するため改行不可(改善したい）
+$comment = str_replace(array("\r\n", "\r", "\n"), '', $comment);
+
+//すべての項目に書き込まれたか判定
+//足りている場合テキストファイルに書き込む
+//足りない場合エラーメッセージを代入して表示させる
 if (  isset($_POST["send"] ) ===  true ) {
     if ( $class_name   === "" ) $err_msg1 = "授業の名前を入力してください"; 
 
@@ -28,9 +37,10 @@ if (  isset($_POST["send"] ) ===  true ) {
     }
  
 }
- 
+//テキストファイルの読み込み
 $fp = fopen("mon_data.txt","r");
  
+//テキストデータを１行ずつ取得し空白で分けて配列に
 $dataArr = array();
 while( $res = fgets( $fp)){
     $tmp = explode("\t",$res);
@@ -71,6 +81,7 @@ while( $res = fgets( $fp)){
           <input type="submit" name="send" value="クリック" >
         </form>
         <dl>
+            <!-- 配列をそれぞれ表示 -->
          <?php foreach( $dataArr as $data ):?>
          <p>★<span><?php echo htmlspecialchars($data["class_name"]); ?></span> : <span><?php echo htmlspecialchars($data["timetable"]); ?></span> : <span><?php echo htmlspecialchars($data["teacher_name"]); ?></span><br>
          <span><?php echo htmlspecialchars($data["comment"]); ?></span></p>
