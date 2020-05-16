@@ -34,6 +34,7 @@ if (  isset($_POST["send"] ) ===  true ) {
         $fp = fopen( "mon_data.txt" ,"a" );
         fwrite( $fp ,  $class_name."\t".$timetable."\t".$teacher_name."\t".$comment."\n");
         $message = "書き込みに成功しました。";
+        OutPutlog($comment); //ログデータを書き込み
     }
  
 }
@@ -53,6 +54,37 @@ while( $res = fgets( $fp)){
     $dataArr[]= $arr;
 } 
  
+//書き込まれたときのログを保存する関数
+function OutPutlog($string)
+{
+	
+	$filename = "mon_log.txt"; //ログファイル名
+	$time = date("Y/m/d H:i"); //アクセス時刻
+	$ip = getenv("REMOTE_ADDR"); //IPアドレス
+	$host = getenv("REMOTE_HOST"); //ホスト名
+	$referer = getenv("HTTP_REFERER"); //リファラ（遷移元ページ）
+	$uri = getenv("REQUEST_URI"); //URI取得
+	$requestbrowser=$_SERVER['HTTP_USER_AGENT'];//ブラウザ情報の取得
+	$requestMethod=$_SERVER['REQUEST_METHOD'];//リクエストメソッドの取得
+	
+	//ログ本文
+	$log = "\n---------------------------------".
+			"\nDATE:".$time .
+			"\nIP:". $ip .
+			"\nHOST:". $host. 
+			"\nURI:". $uri.
+			"\nREFERER:". $referer.
+			"\nBROWSER:". $requestbrowser. 
+            "\nMETHOD:". $requestMethod.
+            "\nCOMMENT:". $string;
+	
+	//ログ書き込み
+	$fp = fopen($filename, "a");
+	fputs($fp, $log);
+	fclose($fp);
+	
+	//echo $log;
+}
  
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
